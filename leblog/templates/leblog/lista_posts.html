@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LeBlog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>📰 LeBlog</h1>
+    <hr>
+</header>
+
+<main class="post-list">
+    {% for post in posts %}
+    <div class="post-card">
+        {% if post.imagem %}
+            <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+        {% endif %}
+        <h2>{{ post.titulo }}</h2>
+        <p>{{ post.conteudo|truncatewords:20 }}</p>
+        <a href="{% url 'detalhe_post' post.id %}" class="read-more">Ler mais</a>
+    </div>
+    {% empty %}
+    <p>Nenhum post encontrado.</p>
+    {% endfor %}
+</main>
+
+</body>
+</html>

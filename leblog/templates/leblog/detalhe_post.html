@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.titulo }} - LeBlog</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>{{ post.titulo }}</h1>
+</header>
+
+<main class="post-detail">
+    {% if post.imagem %}
+        <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+    {% endif %}
+    <p><strong>Autor:</strong> {{ post.autor }} | {{ post.data_publicacao }}</p>
+    <p>{{ post.conteudo }}</p>
+    <a href="/" class="read-more">⬅ Voltar</a>
+</main>
+
+</body>
+</html>
